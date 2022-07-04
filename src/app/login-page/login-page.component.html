@@ -1,0 +1,84 @@
+<section class="login app-section">
+   <div class="login__inner container">
+      <form
+         [formGroup]="form"
+         (ngSubmit)="submitLoginForm()"
+         class="login-form"
+         action="#"
+      >
+         <div class="login-form__header form-header">
+            <legend class="login-form__title form-title">
+               Login
+            </legend>
+
+            <span *ngIf="!formIsValid" class="login-form__errors">
+               Wrong e-mail or password
+            </span>
+         </div>
+
+         <div class="login-form__group form-group">
+            <label
+               class="input-label login-form__label form-label"
+               for="login-email"
+            >
+               <span class="login-form__label-text form-label__text"
+                  >Email:</span
+               >
+               <span class="login-form__label-required form-label__required"
+                  >*required</span
+               >
+            </label>
+
+            <input
+               (ngModelChange)="formChangeHandler()"
+               id="login-email"
+               name="email"
+               class="input login-form__input form-input input-reset"
+               type="email"
+               formControlName="email"
+               placeholder="Enter e-mail"
+               required
+            />
+         </div>
+
+         <div class="login-form__group form-group">
+            <label
+               class="input-label login-form__label form-label"
+               for="login-password"
+            >
+               <span class="login-form__label-text form-label__text"
+                  >Password:</span
+               >
+               <span class="login-form__label-required form-label__required"
+                  >*required</span
+               >
+            </label>
+
+            <input
+               (ngModelChange)="formChangeHandler()"
+               id="login-password"
+               name="password"
+               class="input login-form__input form-input input-reset"
+               type="password"
+               formControlName="password"
+               placeholder="Enter password"
+               required
+            />
+         </div>
+
+         <div class="login-form__footer">
+            <a class="login-form__forgot" href="#">
+               Forgot password?
+            </a>
+            <button
+               routerLink="/courses"
+               (click)="submitLoginForm()"
+               disabled
+               class="login-form__button button-style btn-reset"
+            >
+               Login
+            </button>
+         </div>
+      </form>
+   </div>
+</section>

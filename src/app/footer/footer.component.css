@@ -1,0 +1,10 @@
+.footer {
+   padding: 20px 0;
+   background-color: var(--color-dark);
+   color: var(--color-lightgrey);
+}
+
+.footer__copy {
+   display: block;
+   text-align: right;
+}

@@ -1,0 +1,38 @@
+.login__inner {
+   height: 100%;
+   background-color: var(--color-white);
+   border-radius: 6px;
+   padding: 24px;
+   width: 370px;
+}
+
+.login-form__errors {
+   font-size: 14px;
+   color: var(--color-red);
+}
+
+.login-form__footer {
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   gap: 20px;
+}
+
+.login-form__forgot {
+   color: var(--color-primary);
+   font-size: 14px;
+   text-decoration: underline;
+}
+
+.login-form__button {
+   display: block;
+   margin-left: auto;
+   background-color: var(--color-green);
+   transition: background-color 0.3s, color 0.3s;
+}
+
+.login-form__button:disabled {
+   cursor: default;
+   background-color: #e1e3eb;
+   color: #a8a9b4;
+}

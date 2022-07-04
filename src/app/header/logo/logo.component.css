@@ -1,0 +1,40 @@
+.logo {
+   display: flex;
+   align-items: center;
+   color: inherit;
+   text-decoration: none;
+   font-size: 22px;
+}
+
+.logo__icon {
+   margin-right: 12px;
+   width: 32px;
+   height: 32px;
+   transition: transform 0.3s ease-in-out;
+}
+
+.logo:hover .logo__icon {
+   transform: rotate(90deg) scale(1.1);
+}
+
+.logo__icon path {
+   fill: url(#linear);
+}
+
+.logo__text {
+   font-weight: 600;
+   text-transform: uppercase;
+}
+
+@media (max-width: 480px) {
+   .logo__text {
+      position: absolute;
+      clip-path: polygon(0 0, 0 0, 0 0, 0 0);
+      overflow: hidden;
+      margin: -1px;
+      border: 0;
+      padding: 0;
+      width: 1px;
+      height: 1px;
+   }
+}

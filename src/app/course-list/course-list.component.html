@@ -1,0 +1,91 @@
+<div *ngIf="!showedCourseForm">
+   <app-breadcrumbs></app-breadcrumbs>
+
+   <section class="courses">
+      <app-searchbar (search)="filterByQuery($event)"></app-searchbar>
+
+      <div class="courses__inner container">
+         <a
+            (click)="toggleCourseForm()"
+            routerLink="/courses/new"
+            class="courses__add button-style"
+         >
+            <fa-icon class="courses__add-icon" [icon]="faPlus"></fa-icon>
+            Add course
+         </a>
+
+         <ng-container
+            *ngIf="!courseListIsEmpty; then courseListTemplate; else emptyCourseListTemplate;"
+         ></ng-container>
+
+         <ng-template #courseListTemplate>
+            <ul class="courses__list courses-list list-reset">
+               <li
+                  *ngFor="let course of filterCourseList | orderBy: 'creationDate' | async; first as fst"
+               >
+                  <app-course
+                     [topRated]="fst"
+                     (courseId)="showRemoveItemModal($event)"
+                     [course]="course"
+                  ></app-course>
+               </li>
+            </ul>
+
+            <button class="courses-list__load-more button-style btn-reset">
+               Load more
+            </button>
+         </ng-template>
+
+         <ng-template #emptyCourseListTemplate>
+            <h2 class="course-list-empty">
+               no data. feel free to add new course
+            </h2>
+         </ng-template>
+
+         <div *ngIf="coursesService.courseItemDeleteModalIsShown">
+            <div class="courses-modal">
+               <div class="courses-modal__header">
+                  <h3 class="courses-modal__header-title m-0">
+                     Delete course?
+                  </h3>
+
+                  <button
+                     class="courses-modal__header-close btn-reset"
+                     (click)="closeRemoveCourseModal()"
+                  >
+                     <fa-icon [icon]="faClose"></fa-icon>
+                  </button>
+               </div>
+
+               <div class="courses-modal__body">
+                  <p class="courses-modal__body-text m-0">
+                     Are you sure you want to delete <br />
+                     {{getRemovedItemTitle()}}?
+                  </p>
+               </div>
+
+               <div class="courses-modal__footer">
+                  <button
+                     class="courses-modal__cancel btn-reset button-style"
+                     (click)="closeRemoveCourseModal()"
+                  >
+                     Cancel
+                  </button>
+
+                  <button
+                     class="courses-modal__delete btn-reset button-style"
+                     (click)="removeCourseItem()"
+                  >
+                     Yes, delete
+                  </button>
+               </div>
+            </div>
+
+            <div
+               class="courses-modal-bar"
+               (click)="closeRemoveCourseModal()"
+            ></div>
+         </div>
+      </div>
+   </section>
+</div>

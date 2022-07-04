@@ -1,0 +1,9 @@
+<nav aria-label="Breadcrumbs" class="breadcrumbs">
+   <div class="container">
+      <ol class="breadcrumbs__list list-reset">
+         <li class="breadcrumbs__item" *ngFor="let breadcrumb of breadcrumbs; last as lst">
+            <a class="breadcrumbs__link" [routerLink]="breadcrumb.url" [attr.aria-current]="lst ? 'page': ''">{{breadcrumb.label}}</a>
+         </li>
+      </ol>
+   </div>
+</nav>

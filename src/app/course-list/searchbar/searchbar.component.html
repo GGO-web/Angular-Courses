@@ -1,0 +1,12 @@
+<div class="searchbar container">
+   <form [formGroup]="form" (ngSubmit)="submitForm()" class="searchbar-form" action="#">
+      <label class="input-label searchbar-form__input">
+         <input name="search" class="input input-reset" type="search" formControlName="search" placeholder="Text to search">
+         <fa-icon class="input-label__icon" [icon]="faSearch"></fa-icon>
+      </label>
+
+      <button class="searchbar-form__button button-style btn-reset" [ngStyle]="{'background-color': 'var(--color-green)'}">
+         Search
+      </button>
+   </form>
+</div>

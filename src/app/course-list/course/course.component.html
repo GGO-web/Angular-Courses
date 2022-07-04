@@ -1,0 +1,71 @@
+<div
+   [ngClass]="{'courses-list__item--top': topRated}"
+   [ngStyle]="{'borderWidth': '1px', 'borderStyle': 'solid', 'borderColor': getBorderColorOfTheFreshCourse()}"
+   class="courses-list__item"
+>
+   <div class="courses-list__item-body">
+      <div class="courses-list__item-header">
+         <h2 class="courses-list__item-title m-0">
+            {{course.title | uppercase}}
+            <button
+               (click)="toggleFavoriteItem()"
+               class="courses-list__item-favorite btn-reset"
+            >
+               <fa-icon
+                  [ngClass]="{'active': topRated}"
+                  class="courses-list__item-star"
+                  [icon]="faStar"
+               ></fa-icon>
+            </button>
+         </h2>
+
+         <div class="courses-list__item-info">
+            <span class="courses-list__item-duration">
+               <fa-icon
+                  class="courses-list__item-icon"
+                  [icon]="faTime"
+               ></fa-icon>
+               <span>
+                  {{course.duration | duration}}
+               </span>
+            </span>
+
+            <time class="courses-list__item-time">
+               <fa-icon
+                  class="courses-list__item-icon"
+                  [icon]="faCalendar"
+               ></fa-icon>
+               <span>
+                  {{course.creationDate | date : "d MMM, y"}}
+               </span>
+            </time>
+         </div>
+      </div>
+
+      <p class="courses-list__item-description m-0">
+         {{course.description}}
+      </p>
+
+      <span class="course-list__item-authors">
+         by {{course.authors.join(", ")}}
+      </span>
+   </div>
+
+   <div class="courses-list__item-controls">
+      <button
+         [routerLink]="['/courses', course.id]"
+         class="courses-list__item-modify button-style btn-reset"
+      >
+         <fa-icon class="courses-list__item-icon" [icon]="faPen"></fa-icon>
+         <span>Edit</span>
+      </button>
+
+      <button
+         (click)="removeCourse()"
+         class="courses-list__item-delete button-style btn-reset"
+      >
+         <fa-icon class="courses-list__item-icon" [icon]="faTrash"></fa-icon>
+         <span>Delete</span>
+      </button>
+   </div>
+</div>

@@ -1,0 +1,179 @@
+<app-breadcrumbs path="courses/new course"></app-breadcrumbs>
+
+<section class="app-section">
+   <form
+      [formGroup]="form"
+      (ngSubmit)="formSubmit($event)"
+      class="course-form container"
+      action="#"
+   >
+      <div class="course-form__header form-header">
+         <legend class="course-form__title form-title">
+            {{courseFormTitle}}
+         </legend>
+      </div>
+
+      <div class="course-form__group form-group">
+         <label
+            class="input-label course-form__label form-label"
+            for="course-form-title"
+         >
+            <span class="course-form__label-text form-label__text">Title:</span>
+            <span class="course-form__label-required form-label__required"
+               >*required</span
+            >
+         </label>
+
+         <input
+            id="course-form-title"
+            name="title"
+            class="input course-form__input form-input input-reset"
+            type="text"
+            formControlName="title"
+            placeholder="Text input"
+            required
+         />
+      </div>
+
+      <div class="course-form__group form-group">
+         <label
+            class="input-label course-form__label form-label"
+            for="course-form-description"
+         >
+            <span class="course-form__label-text form-label__text"
+               >Description:</span
+            >
+            <span class="course-form__label-required form-label__required"
+               >*required</span
+            >
+         </label>
+
+         <textarea
+            id="course-form-description"
+            name="description"
+            class="input course-form__input course-form__description form-input input-reset"
+            formControlName="description"
+            placeholder="Add description"
+            required
+         ></textarea>
+      </div>
+
+      <div class="course-form__group course-form__group-row form-group">
+         <label
+            class="input-label course-form__label form-label"
+            for="course-form-duration"
+         >
+            <span class="course-form__label-text form-label__text"
+               >Duration:</span
+            >
+            <span class="course-form__label-required form-label__required"
+               >*required</span
+            >
+         </label>
+
+         <input
+            id="course-form-duration"
+            type="number"
+            min="0"
+            name="duration"
+            class="input course-form__input course-form__duration form-input input-reset"
+            formControlName="duration"
+            placeholder="minutes"
+            required
+         />
+
+         <span class="course-form__duration-parsed">
+            {{getFormDuration()}}
+         </span>
+      </div>
+
+      <div class="course-form__group course-form__group-row form-group">
+         <label
+            class="input-label course-form__label form-label"
+            for="course-form-date"
+         >
+            <span class="course-form__label-text form-label__text">Date:</span>
+            <span class="course-form__label-required form-label__required"
+               >*required</span
+            >
+         </label>
+
+         <input
+            id="course-form-date"
+            name="date"
+            class="input course-form__input course-form__date form-input input-reset"
+            formControlName="date"
+            placeholder="MM/DD/YYYY"
+            matInput
+            [matDatepicker]="picker"
+            required
+         />
+
+         <div class="course-form__date-icon">
+            <mat-datepicker-toggle
+               matSuffix
+               [for]="picker"
+            ></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+         </div>
+      </div>
+
+      <div class="course-form__group form-group">
+         <label
+            class="input-label course-form__label form-label"
+            for="course-form-authors"
+         >
+            <span class="course-form__label-text form-label__text"
+               >Authors:</span
+            >
+            <span class="course-form__label-required form-label__required"
+               >*required</span
+            >
+         </label>
+
+         <div class="course-form__group-part" formArrayName="authors">
+            <mat-chip-list #chipList>
+               <mat-chip
+                  *ngFor="let author of form.value.authors"
+                  #chipList
+                  (removed)="removeAuthor(author)"
+               >
+                  {{author}}
+                  <button matChipRemove>
+                     <mat-icon>cancel</mat-icon>
+                  </button>
+               </mat-chip>
+
+               <input
+                  id="course-form-authors"
+                  name="authors"
+                  class="course-form__chip form-input input-reset"
+                  placeholder="Start typing"
+                  [matChipInputFor]="chipList"
+                  [matChipInputAddOnBlur]="true"
+                  (matChipInputTokenEnd)="addAuthor($event)"
+               />
+            </mat-chip-list>
+         </div>
+      </div>
+
+      <div class="course-form__group course-form__group-controls form-group">
+         <button
+            routerLink="/courses"
+            type="reset"
+            class="course-form__button course-form__button-cancel button-style btn-reset"
+         >
+            Cancel
+         </button>
+
+         <button
+            routerLink="/courses"
+            (click)="formSubmit($event)"
+            type="submit"
+            class="course-form__button course-form__button-save button-style btn-reset"
+         >
+            Save
+         </button>
+      </div>
+   </form>
+</section>

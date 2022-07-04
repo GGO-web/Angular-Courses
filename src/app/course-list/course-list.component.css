@@ -1,0 +1,137 @@
+.courses {
+   padding-top: 30px;
+   padding-bottom: 100px;
+}
+
+.courses__inner {
+   display: grid;
+   grid-gap: 20px;
+}
+
+.courses__add {
+   display: inline-flex;
+   align-items: center;
+   justify-self: flex-end;
+   margin-left: auto;
+   background-color: var(--color-primary);
+}
+
+.courses__add-icon {
+   display: flex;
+   height: 24px;
+   font-size: 26px;
+   margin-right: 15px;
+}
+
+.courses-list {
+   display: grid;
+   grid-gap: 30px;
+}
+
+.courses-list__load-more {
+   background-color: var(--color-white);
+   color: var(--color-primary);
+   text-decoration: underline;
+   padding-top: 20px;
+   padding-bottom: 20px;
+   box-shadow: var(--box-shadow);
+   text-transform: uppercase;
+}
+
+.courses-list__load-more:hover {
+   text-decoration: none;
+}
+
+.course-list-empty {
+   text-align: center;
+   text-transform: uppercase;
+   padding: 10px;
+   border: 1px solid var(--color-grey);
+   box-shadow: var(--box-shadow);
+}
+
+.courses-modal {
+   position: fixed;
+   z-index: 1000;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+   border-radius: 5px;
+   background-color: #fff;
+   width: 100%;
+   max-width: 470px;
+}
+
+.courses-modal-bar {
+   content: "";
+   position: fixed;
+   z-index: 100;
+   top: 0;
+   left: 0;
+   background-color: #1d1e26;
+   opacity: 0.7;
+   width: 100%;
+   height: 100%;
+}
+
+.courses-modal__header {
+   display: grid;
+   grid-template-columns: 1fr auto;
+   align-items: center;
+   grid-gap: 30px;
+   padding: 18px 24px;
+   border-bottom: 1px solid var(--color-storm-grey);
+}
+
+.courses-modal__header-title {
+   font-weight: 600;
+   font-size: 22px;
+}
+
+.courses-modal__header-close {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   padding: 5px;
+   font-size: 20px;
+   color: var(--color-storm-grey);
+}
+
+.courses-modal__header-close fa-icon {
+   display: inline-flex;
+   align-items: center;
+   justify-content: center;
+   width: 14px;
+   height: 14px;
+}
+
+.courses-modal__body {
+   padding: 19px 24px 28px;
+   border-bottom: 1px solid var(--color-storm-grey);
+}
+
+.courses-modal__footer {
+   display: flex;
+   gap: 12px;
+   justify-content: flex-end;
+   padding: 13px 24px 12px;
+}
+
+.courses-modal__cancel {
+   font-weight: 600;
+   background-color: transparent;
+   color: var(--color-storm-grey);
+   border: 1px solid var(--color-storm-grey);
+   border-radius: var(--border-value);
+}
+
+@media (max-width: 768px) {
+   .courses {
+      padding: 20px 0;
+   }
+
+   .courses-list__load-more {
+      padding-top: 10px;
+      padding-bottom: 10px;
+   }
+}
