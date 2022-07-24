@@ -2,7 +2,7 @@
 
 :root {
    --color-dark: #474c59;
-   --color-primary: #32bad9;
+   --color-primary: hsl(191, 69%, 52%);
    --color-green: #a1bf36;
    --color-red: #ff4e33;
    --color-light: #f2f3f7;
@@ -167,6 +167,11 @@ app-login-page {
    text-align: center;
    background-color: var(--color-primary);
    height: 100%;
+   transition: filter 0.3s ease-in-out;
+}
+
+.button-style:hover {
+   filter: contrast(120%);
 }
 
 .button-style:hover .ng-fa-icon {

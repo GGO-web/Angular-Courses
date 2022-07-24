@@ -60,6 +60,11 @@
 .courses-list__item-favorite {
    display: flex;
    margin-left: 10px;
+   transition: transform 0.3s;
+}
+
+.courses-list__item-favorite:hover {
+   transform: scale(1.2);
 }
 
 .courses-list__item-star {
